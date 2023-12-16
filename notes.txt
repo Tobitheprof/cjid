@@ -1,0 +1,4 @@
+** swap navbar heirachy to place Process a document above processed documents.
+** remember to setup project to use poetry while setting fullstack version up.
+** CHOP INDOMIE!!!!!!!!!
+** try to leave my room to get some fresh air
