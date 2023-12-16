@@ -14,7 +14,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard | Doo-Hickey</title>
+    <title>Process a Document | Doo-Hickey</title>
 
     <meta name="description" content="" />
 
@@ -73,7 +73,7 @@
 
           <ul class="menu-inner py-1 mt-5">
             <!-- Dashboard -->
-            <li class="menu-item active">
+            <li class="menu-item">
               <a href="index.html" class="menu-link mb-5">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -101,7 +101,7 @@
               </a>
             </li>
 
-            <li class="menu-item">
+            <li class="menu-item active">
               <a href="index.html" class="menu-link mb-5">
                 <i class="menu-icon tf-icons bx bx-clipboard"></i>
                 <div data-i18n="Analytics">Process a document</div>
@@ -144,65 +144,30 @@
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
                 <div class="col-lg-12 mb-4 order-0">
-                  <div class="card">
-                    <div class="d-flex align-items-end row">
-                      <div class="col-sm-7">
-                        <div class="card-body">
-                          <h5 class="card-title text-primary">Yo!!!!! What's Up Chief?</h5>
-                          <p class="mb-4">
-                            Hi, wazza? Welcome aboard, I'm <span class="fw-bold">Tobi</span>. Creator of this here doo-hickey
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-sm-5 text-center text-sm-left">
-                        <div class="card-body pb-0 px-0 px-md-4">
-                          <img
-                            src="https://media.tenor.com/hLlMwJ6eXL4AAAAi/anime-girl-jam-anime-jam.gif"
-                            height="140"
-                            alt="View Badge User"
-                          />
+                  <h3>Process a Document</h3>
+                  <p class="lead">On this page, you can easily process a document by uploading it and letting the engine do all of the work while you slack off and do other stuff 😊</p>
+                </div>
+                <form action="" method="post">
+                  <div class="col-md-6">
+                    <div class="card mb-4">
+                      <div class="card-body">
+                        <div>
+
+                          <label for="defaultFormControlInput" class="form-label mt-3">Title</label>
+                          <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Don't worry about the title, I've got this one" aria-describedby="defaultFormControlHelp" name="title" required>
+
+                          <label for="defaultFormControlInput" class="form-label mt-3">Date of Publication</label>
+                          <input type="date" class="form-control" id="defaultFormControlInput" placeholder="John Doe" aria-describedby="defaultFormControlHelp" name="date">
+
+                          <label for="formFile" class="form-label mt-3">File</label>
+                          <input class="form-control" type="file" id="formFile" name="file">
+
+                          <button class="btn btn-primary mt-3" type="submit">Upload</button>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12 mb-4 order-0">
-                  <h3 class="fw-bold">What would you like to do?</h3>
-                  <p>Again, hello there and welcome to the OCR toolkit. I really couldn't come up with a name for this project. so, in the spirit of a man from Texas who might also fall into the same state of confusion that I did, I decided to call it "DooHickey". DooHickey is a tool that lets you doo-hickey!!!. Okay, that's obviously a joke. BUt, DooHickey is actually a tool that uses custom-trained OCR models to extract text from images and documents and let's you use the extracted data to train ML models with zero code. You can read more about it here and get all th nerdy stats as well.</p>
-                </div>
-                <div class="col-lg-12 mb-4 order-0">
-                  <div class="row">
-                    <div class="col-md-6 col-lg-4 mb-3">
-                      <div class="card h-100">
-                        <img class="card-img-top" src="resources/img/chat.jpg" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title">Talk to your data</h5>
-                          <p class="card-text">Are you single? probably yes and I'm guessing thats why you want to talk to your data.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-3">
-                      <div class="card h-100">
-                        <img class="card-img-top" src="resources/img/organize.jpg" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title">Organize your data</h5>
-                          <p class="card-text">Unlike my work desk, DooHickey lets you organize your data in the way you want</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-3">
-                      <div class="card h-100">
-                        <img class="card-img-top" src="resources/img/train2.jpg" alt="Card image cap" class="img-fluid">
-                        <div class="card-body">
-                          <h5 class="card-title">Train ML models</h5>
-                          <p class="card-text">Well, unlike my gym life, you can actually train your own custom Ml model using the data extracted from your documents.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
 
@@ -242,5 +207,24 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <script>
+      const fileInput = document.getElementById('formFile');
+      const titleInput = document.getElementById('defaultFormControlInput');
+      // Add an event listener to the file input
+      fileInput.addEventListener('change', function() {
+        // Check if a file is selected
+        if (fileInput.files.length > 0) {
+          // Get the file name
+          const fileName = fileInput.files[0].name;
+
+          // Set the value of the title input to the file name
+          titleInput.value = fileName;
+        } else {
+          // If no file is selected, reset the title input
+          titleInput.value = '';
+        }
+      });
+    </script>
   </body>
 </html>
