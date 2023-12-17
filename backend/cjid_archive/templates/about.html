@@ -1,0 +1,32 @@
+<!-- Content -->
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-xxl flex-grow-1 container-p-y p-4 mt-3">
+  <div class="row">
+    <div class="col-lg-12 mb-4 order-0">
+      <h2 class="fw-bold">About DooHickey</h2>
+      <p class="lead">Why did the man go see a therapist after offending the mexican drug cartel? Cause of HIS-PANIC attacks!!!</p>
+      <p class="lead">Okay, I guess that lightened your mood a bit. I'm Tobi, super ninja, MMA figter, football star and an alpa male in my imagination, that is.</p>
+      <p class="lead">In this page, I will be talking about what Doo-Hickey is, what it isn't and what it can do.</p>
+      <p class="lead">For starters, Doo-Hickey is not a an oven for you to bake a cake in, obviously XD</p>
+      <p class="lead">Do-Hickey is a tool that employs the use of advanced machine learning algorithms, within image preprocessing, character recognition, language modelling, post-processing and page layout analysis to successfully extract text from images</p>
+      <p class="lead">To do this it uses tesseract-ocr a tool for this intended purpose. Only that it trained once more and fine tuned to adjust to this data and collect accuracte information.</p>
+      <p class="lead">The process of collecting this text from a document is highlighted below.</p>
+      <ul>
+        <li>Upon the successful upload of document to Do-Hickey, background task is triggered that starts the processing of the file for character extraction.</li>
+        <li>The first task that is triggered involves the conversion of the document into high resolution image(s)</li>
+        <li>After a successful conversion, the image(s) go throuogh an upscaling process to help make small detail visible</li>
+        <li>From here, the image(s) has its dpi increared and then finally fed into the OCR algorigthm</li>
+        <li>The OCR algorithm extracts the text and then saves it to the database.</li>
+      </ul>
+      <p class="lead">And that's it, the document would have been processed and parsed completely. The best part about all of this is that it is very well optimized whihc means very fast loading and processing times.</p>
+      <p class="lead">All of the steps it takes to extarct data here usually takes about 3-20 seconds in total and is usually dependent on the document size.</p>
+      <p class="lead">You can read about Tesseract over here <a href="https://github.com/tesseract-ocr/tesseract.git" target="_blank">here</a></p>
+      <p class="lead">That's it about Doo-Hickey chief if you have any questions, don't hesistate to send me an email <a href="mailto:tobiekundayo07@gmail.com">here</a></p>
+      <p class="lead">I look forward to getting your feedback. Until then, see you soon.</p>
+      <img src="https://media1.tenor.com/m/WGVm71AESV0AAAAC/anime-bye-bye-yugi-amane.gif" alt="" class="img-fluid">
+    </div>
+  </div>
+</div>
+{% endblock content %}
