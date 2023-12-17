@@ -20,4 +20,15 @@ def about(request):
     }
     return render(request, 'about.html', context)
 
+def process_document(request):
+    context = {
+        'title' : "Process a Document"
+    }
+    return render(request, 'document_processing.html', context)
+
+def document_detail(request):
+    context = {
+        'title' : "Detail"
+    }
+    return render(request, 'document_detail.html', context)
 # Create your views here.

@@ -181,5 +181,23 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+      const fileInput = document.getElementById('formFile');
+      const titleInput = document.getElementById('defaultFormControlInput');
+      // Add an event listener to the file input
+      fileInput.addEventListener('change', function() {
+        // Check if a file is selected
+        if (fileInput.files.length > 0) {
+          // Get the file name
+          const fileName = fileInput.files[0].name;
+
+          // Set the value of the title input to the file name
+          titleInput.value = fileName;
+        } else {
+          // If no file is selected, reset the title input
+          titleInput.value = '';
+        }
+      });
+    </script>
   </body>
 </html>
