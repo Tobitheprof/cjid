@@ -8,19 +8,20 @@
         <p class="lead">On this page, you can easily process a document by uploading it and letting the engine do all of the work while you slack off and do other stuff 😊</p>
       </div>
       <form action="" method="post">
+        {% csrf_token %}
         <div class="col-md-6">
           <div class="card mb-4">
             <div class="card-body">
               <div>
 
                 <label for="defaultFormControlInput" class="form-label mt-3">Title</label>
-                <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Don't worry about the title, I've got this one" aria-describedby="defaultFormControlHelp" name="title" required>
+                <input name="title" type="text" class="form-control" id="defaultFormControlInput" placeholder="Don't worry about the title, I've got this one" aria-describedby="defaultFormControlHelp" required>
 
                 <label for="defaultFormControlInput" class="form-label mt-3">Date of Publication</label>
-                <input type="date" class="form-control" id="defaultFormControlInput" placeholder="John Doe" aria-describedby="defaultFormControlHelp" name="date">
+                <input type="date" class="form-control" id="defaultFormControlInput" placeholder="John Doe" aria-describedby="defaultFormControlHelp" name="date" required>
 
                 <label for="formFile" class="form-label mt-3">File</label>
-                <input class="form-control" type="file" id="formFile" name="file">
+                <input class="form-control" type="file" id="formFile" name="file" required>
 
                 <button class="btn btn-primary mt-3" type="submit">Upload</button>
               </div>

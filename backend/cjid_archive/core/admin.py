@@ -8,4 +8,6 @@ class DocumentAdmin(admin.ModelAdmin):
     inlines = [ImageAdmin]
     list_display = ['title', 'publication_date', 'date_uploaded', 'document']
 
+admin.site.register(Document, DocumentAdmin)
+
 # Register your models here.
