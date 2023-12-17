@@ -1,0 +1,10 @@
+asgiref==3.7.2
+Django==5.0
+packaging==23.2
+Pillow==10.1.0
+PyMuPDF==1.23.7
+PyMuPDFb==1.23.7
+pytesseract==0.3.10
+sqlparse==0.4.4
+typing_extensions==4.9.0
+tzdata==2023.3
