@@ -9,5 +9,6 @@ class DocumentAdmin(admin.ModelAdmin):
     list_display = ['title', 'publication_date', 'date_uploaded', 'document']
 
 admin.site.register(Document, DocumentAdmin)
+admin.site.register(ExtractedImages)
 
 # Register your models here.

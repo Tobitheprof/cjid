@@ -26,6 +26,7 @@ def process_document_task(document_id):
                 associated_document=document
             )
             extracted_image.image.save(image_file, open(image_path, 'rb'), save=True)
+            print(f"Saved Image {image_file}")
 
     except Document.DoesNotExist:
         # Handle the case where the document does not exist

@@ -7,7 +7,7 @@
         <h3>Process a Document</h3>
         <p class="lead">On this page, you can easily process a document by uploading it and letting the engine do all of the work while you slack off and do other stuff 😊</p>
       </div>
-      <form action="" method="post">
+      <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="col-md-6">
           <div class="card mb-4">

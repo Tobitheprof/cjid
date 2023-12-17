@@ -33,8 +33,9 @@ def process_document(request):
         new_document.save()
 
         process_document_task.delay(new_document.pk)
+        print("STARTEDT TASK")
 
-        messages.success(f"Alright, the document processing has started. It might take sometime so just relax while the engine takes care of the work. The admin should an email once it's done processing")
+        # messages.info("Alright, the document processing has started. It might take sometime so just relax while the engine takes care of the work. The admin should an email once it's done processing")
 
         return redirect("process_document")
 
