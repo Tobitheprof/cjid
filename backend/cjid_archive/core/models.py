@@ -12,7 +12,7 @@ class Document(models.Model):
     title = models.CharField(max_length=200, unique=True, editable=False, primary_key=True)
     publication_date = models.DateField()
     date_uploaded = models.DateField(auto_now_add=True)
-    extracted_text = models.TextField()
+    extracted_text = models.TextField(null=True)
     document = models.FileField(upload_to="documents/newspapers")
     processing_status = models.CharField(max_length=200, choices=PROCESS_STATUS)
 
