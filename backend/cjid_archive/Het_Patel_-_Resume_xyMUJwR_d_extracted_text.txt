@@ -1,0 +1,74 @@
+HET PATEL
+
+& (416) 990-5267 ™&% het.patel1@uwaterloo.ca Mi heti613 @heti613 €} hetpatel.site
+SKILLS
+
+Languages: Python, TypeScript, JavaScript, C++, Dart, Golang, SQL, HTML/CSS
+Frameworks/ Libraries: Flask, Node.js, React, Next.js, Fastify, Jest, Express, Flutter
+Development Tools: AWS, Datadog, Terraform, PostgreSQL, Docker, Kubernetes, Bash, Git
+
+EDUCATION
+University of Waterloo Waterloo, ON
+Bachelor of Applied Science — Systems Design Engineering Sept 2021 — Apr 2026
+
+e Cumulative GPA: 3.98/4.00 (96%), Dean’s Honours List Recipient
+
+e First in Class Engineering Scholarship (Top 1/120 Students): Presented to the top student in each class based on
+academic performance
+
+e Relevant Courses: Data Structures and Algorithms (99%), Digital Computation (98%), Digital Systems (98%)
+
+EXPERIENCE
+Software Developer Intern // Flexpa San Francisco, CA
+Stack: Typescript, React, Next.js, Jest, PostgreSQL, Datadog Sept 2022 — Dec 2022
+
+e Planned and released a KYC (Know Your Customer) self-serve flow with minimal supervision, enabling Flexpa to capture its
+first customer and revenue with a projected ROI of over $240,000 (215%) within the first year of deployment
+
+e Streamlined customer onboarding process by developing a new digital verification and notification system using incoming
+webhooks from Slack’s API, reducing time required for verification by 25+ minutes and customer wait times by 85%
+
+e Utilized Jest to write comprehensive unit/integration tests to ensure full coverage of KYC self-serve flow API endpoints
+
+e Integrated Datadog RUM (Real User Monitoring) into the customer portal app and leveraged provided metrics to detect
+anomalies and resolve website performance issues, increasing website uptime by 33% and user engagement by 15%
+
+e Saved engineers up to 10 hours/week in manual deployment by implementing GitHub Actions into the company’s CI/CD
+pipeline for automated build, test, and deployment processes, resulting in faster and more reliable releases
+
+Software Engineering Intern // ActiveState Software Inc. Vancouver, BC
+Stack: Python, Golang, AWS, Terraform, Bazel, Mesos, Docker, Kubernetes Jan 2022 — April 2022
+e Set up dedicated Mesos code signing agents on AWS using Terraform to produce valid platform artifacts with appropriate
+Microsoft Authenticode signatures for Windows runtimes, reducing build times by 12 minutes
+e Extended Mesos scheduler support for agent attributes to include range values using Golang allowing job requests for
+scheduled builds from the platform to be handled 15% quicker
+e Increased community forum traffic by 53% through updating legacy codebase to Django 4.0 and Python 3.8
+e Performed test-driven development by writing new unit tests for new APIs on Golang, increasing code coverage by 23%
+
+President/Founder // CBSS Computer Science Club Brampton, ON
+Stack: Python, C++ Oct 2019 — May 2021
+e Supervised and presented 25+ weekly Python and C++ lessons/workshops to 100+ students on competitive coding
+e Hosted and lead the school’s first hackathon and other coding competitions to prepare for UWaterloo’s CCC
+e Saved 64% ($1.5K) of the annual budget by finding alternatives for paid resources and running competitions virtually
+
+PROJECTS
+
+Blossom (Google Solution Challenge 2022) @ | Dart, Flutter, Firebase, Google Cloud Platform
+Achieved Top 3 Global out of 850+ teams ($15,000+ Cash Prize)
+e Built an Android and iOS app using Flutter to provide access to accurate and reliable menstrual education and resources for
+young girls in underprivileged nations
+e Integrated Firebase to perform authentication via Google OAuth and store user learning progress and track period cycles
+e Added map filters using Google Places and Directions API to allow users to find the nearest sanitary products and health
+services within a customized map
+e Enabled future cycle prediction using k-nearest neighbours (KNN) machine learning algorithm with anonymous data provided
+by users
+e Conducted a 2-phase A/B testing strategy with 45+ users in India to improve period tracker feature, UI and app usability
+
+TrackDown (Spotify to MP3 Converter) @% | Python, Flask, Spotify Web API, HTML, CSS, Heroku
+e Developed a web app with 140+ users to automatically retrieve Spotify playlists and convert them to MP3
+e Hosted a Python/Flask server handling 75,000+ requests to the Spotify Web API for OAuth and data retrieval on Heroku
+e Decreased download times by over 85% through enabling multicore processing to handle multiple downloads at once
+
+INTERESTS
+
+Drama (5+ Years of Cultural Plays), Garba (Indian Folk Dance), Hackathons, Riding Motorcycles, Basketball

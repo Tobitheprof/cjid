@@ -9,7 +9,7 @@ PROCESS_STATUS = (
 
 
 class Document(models.Model):
-    title = models.CharField(max_length=200, unique=True, editable=False, primary_key=True)
+    title = models.CharField(max_length=200, unique=True)
     publication_date = models.DateField()
     date_uploaded = models.DateField(auto_now_add=True)
     extracted_text = models.TextField(null=True)
@@ -27,6 +27,6 @@ class ExtractedImages(models.Model):
     image = models.ImageField(upload_to="newspapers/extracted_images")
 
     def __str__(self):
-        return f"{self.associated_document.title}-{self.id}-{self.page_number}"
+        return f"{self.id}-{self.page_number}"
 
 # Create your models here.

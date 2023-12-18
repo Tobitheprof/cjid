@@ -1,0 +1,147 @@
+Oluwatobi Ekundayo
+
+Software engineer focused on creating robust, scalable applications, specializing in automation
+and web scraping. Committed to staying current with the latest technologies to drive innovation.
+
+EXPERIENCE
+
+ChatVE, Lagos, Nigeria — ML Engineer, Automation Engineer, Web Scraper and Full Stack
+Developer
+
+JANUARY 2023 - Present
+
+STACK: Python, React, PostgreSQL, MySQL, MongoDB, FastAPI, Django, Diango REST Framework,
+Tensorflow, Next,js, Pandas, Matplotlib
+
+e Employed the use of a deep understanding of statistics to build well-developed
+and industry standard SVMs which were to fact-check claims in real time at record
+speed.
+
+e Visualized data to identify key areas of improvement in training curves for LLMs
+helping to reduce tine spent debugging and troubleshooting by 30%
+
+e Automated deployments to google cloud with CI/CD significantly reducing
+deployment time by 80%
+
+e Collected data from all parts of the internet to use in the training of LLMs with the
+use of web scraping tools like Selenium, Scrapy and Playwright
+
+e Wrote APIs with FastAPI to easily integrate web interfaces with ML models on the
+frontend.
+
+Infignity, London, United Kingdom — Full Stack Web Developer, Automation Engineer, Web
+Scraper and ML Engineer
+
+MARCH 2023 - Present
+
+STACK: Python, React, PostgreSQL, MongoDB, TensorFlow, Spacy, Pandas, Matplotlib, Nextjs,
+Django, GraphQL
+
+e Developed marketing software for the web that were powered by custom large
+language models
+e Collected and scraped data from different platforms to generate leads for
+marketing purposes
+e Automated tasks like account generation, data entry and web scraping to help cut
+down the hours of the operations team by over 10 hours/week.
+e Managed a web application with over 10,000 monthly users using custom
+developed CRMs that provided valuable insights to facilitate management.
+e Wrote NLP CNNs with TensorFlow and spacy that achieved accuracies between 80-
+90% after training.
+Brain Box Intel, Lagos, Nigeria — Full Stack Web Developer
+OCTOBER 2023 - Present
+STACK: Python, React, PostgreSQL, DRF, Datadog
+
+e Integrated GitHub actions into the company’s CI/CD pipeline to help speed up
+deploys and ship products faster.
+e Administrated and managed over 2,000 monthly users on the app.
+e Performed test- driven development by writing new unit tests for new APIs on
+DRF, increasing code coverage by 23%.
+e Integrated Google Site Analytics for real time monitoring of web app performance
+and user metrics.
+CareerEdu, London, United Kingdom — Full Stack Developer and Data Scientist
+FEBRUARY 2022 - JANUARY 2023
+
+STACK: Python, HTML, JavaScript, CSS, Tailwind, PostgreSQL, DRF, Datadog, Matplotlib, Numpy,
+Pandas
+
+e _ Explored, cleaned and presented insights from data collected overtime from users
+using frameworks like Pandas and Matplotlib.
+e Crafted and implemented new features developed upon existing data.
+e Used NLP techniques to perform text mining, sentiment analysis and language
+modelling
+e Documented and maintained existing codebase that consisted of web and LLM
+applications to help cut down time spent trying to understand a project.
+More of my experience is located on my
+website(https://tobitherevolutionary.pythonanywhere.com/#resume)
+EDUCATION
+Ahmadu Bello University, Kaduna — B.Eng(Computer Engineering)
+January 2023 - October 2028
+
+As it stands, Iam a student of Ahmadu Bello University where I am a second year student
+majoring in computer engineering where I boast an impressive 4.89/5.00 GPA
+
+PROJECTS
+
+ProgenX — Portfolio Generation App
+
+Read about it on my github(https://github.com/Tobitheprof/progenex/tree/main )
+ProgressWave — eLearning Application
+
+Read about it on my GitHub (https://github.com/Tobitheprof/progresswave)
+
+Sigma — Health App
+
+Read about Sigma on my GitHub (https://github.com/Tobitheprof/sigma/tree/master)
+
+Kawo, Kaduna
+
+Kaduna, 800213
+
+(234) 91-5937-2550
+tobiekundayo07@gmail.com
+
+SOCIALS
+
+Linkedin:
+
+https://www.linkedin.com/in/oluwat
+
+obi-ekundayo-283b60229/
+
+Github:
+https://github.com/Tobitheprof
+
+SKILLS
+
+Full Stack Web Development
+Web Scraping.
+
+Cloud Engineering.
+Cyber Security.
+Automation.
+
+LLM Development.
+Data Manipulation.
+Data Visualization.
+Prompt Engineering.
+Technical Writing.
+Object Oriented Programming
+Project Management.
+HOBBIES
+
+PC Building
+Electronics
+
+Anime
+
+Manga
+
+Comics
+
+Gaming
+
+Books
+
+Football
+
+Music

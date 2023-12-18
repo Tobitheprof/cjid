@@ -6,7 +6,7 @@ class ImageAdmin(admin.TabularInline):
 
 class DocumentAdmin(admin.ModelAdmin):
     inlines = [ImageAdmin]
-    list_display = ['title', 'publication_date', 'date_uploaded', 'document']
+    list_display = ['title', 'publication_date', 'date_uploaded', 'document', 'extracted_text']
 
 admin.site.register(Document, DocumentAdmin)
 admin.site.register(ExtractedImages)

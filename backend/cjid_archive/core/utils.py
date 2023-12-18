@@ -48,3 +48,8 @@ def extract_text_from_images(folder_name):
 
     print(f"All extracted text has been saved to {output_text_file}")
 
+    # Read the content of the text file and return the extracted text
+    with open(output_text_file, 'r', encoding='utf-8') as text_file:
+        extracted_text_from_file = text_file.read()
+
+    return extracted_text_from_file

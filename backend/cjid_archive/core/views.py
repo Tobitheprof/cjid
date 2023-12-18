@@ -32,7 +32,7 @@ def process_document(request):
         new_document = Document.objects.create(title=title, publication_date=publication_date, document=file)
         new_document.save()
 
-        process_document_task.delay(new_document.pk)
+        extract_images_task.delay(new_document.pk)
         print("STARTEDT TASK")
 
         # messages.info("Alright, the document processing has started. It might take sometime so just relax while the engine takes care of the work. The admin should an email once it's done processing")
