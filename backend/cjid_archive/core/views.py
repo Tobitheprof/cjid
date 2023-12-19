@@ -48,7 +48,7 @@ def archive(request):
     num_results = document_list.count()
 
     # Pagination
-    per_page = 1  # Change this to your desired number of items per page
+    per_page = 10  # Change this to your desired number of items per page
     paginator = Paginator(document_list, per_page)
     page_number = request.GET.get('page')
 
@@ -89,9 +89,8 @@ def process_document(request):
 
 
         convert_pdf_to_images.delay(new_document.pk)
-        print("STARTEDT TASK")
 
-        # messages.info("Alright, the document processing has started. It might take sometime so just relax while the engine takes care of the work. The admin should an email once it's done processing")
+        messages.info(request, "Alright, the document processing has started. It might take sometime so just relax while the engine takes care of the work. The document should pop up in the archives once it's done processing")
 
         return redirect("process_document")
 
@@ -107,4 +106,11 @@ def document_detail(request, pk):
         'document' : document
     }
     return render(request, 'document_detail.html', context)
+
+
+def data_talk(request):
+    context = {
+        'title' : 'Talk with your data'
+    }
+    return render(request, 'data.html', context)
 # Create your views here.

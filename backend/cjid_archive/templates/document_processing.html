@@ -6,6 +6,11 @@
       <div class="col-lg-12 mb-4 order-0">
         <h3>Process a Document</h3>
         <p class="lead">On this page, you can easily process a document by uploading it and letting the engine do all of the work while you slack off and do other stuff 😊</p>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-primary" role="alert">{{message}}</div>
+        {% endfor %}
+        {% endif %}
       </div>
       <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}

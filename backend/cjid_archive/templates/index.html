@@ -32,15 +32,19 @@
   <div class="row">
     <div class="col-lg-12 mb-4 order-0">
       <h3 class="fw-bold">What would you like to do?</h3>
-      <p>Again, hello there and welcome to the OCR toolkit. I really couldn't come up with a name for this project. so, in the spirit of a man from Texas who might also fall into the same state of confusion that I did, I decided to call it "DooHickey". DooHickey is a tool that lets you doo-hickey!!!. Okay, that's obviously a joke. BUt, DooHickey is actually a tool that uses custom-trained OCR models to extract text from images and documents and let's you use the extracted data to train ML models with zero code. You can read more about it here and get all th nerdy stats as well.</p>
+      <p>Hey, welcome back, bad naming choice I know, but it's what I was able to come with, like that one guy from texas who doesn't know the name of a tool</p>
+      <p>This project was developed as part of the technnical-interview of the CJID recruitment process. The whole idea behind this is to digitize newspapers and make store them in a nice organized database that easy to look through with the some simple search parameters.</p>
+      <p>Ahead of this, the extracted data from the digitized newspapers is meant to be used to train a machine learning model that can be customized based on the kind of newspaper data you feed it.</p>
+      <p>It's meant to be a kind of like Chat bot that let's you talk to this data. If you're a nerd like myself and you'd like to know how all of this works you can read about <a href="{% url 'about' %}">here</a></p>
+      <p>Now that that's out of the way, here's what you can do with DooHickey!!!</p>
     </div>
     <div class="col-lg-12 mb-4 order-0">
       <div class="row">
         <div class="col-md-6 col-lg-4 mb-3">
           <div class="card h-100">
-            <img class="card-img-top" src="{% static 'resources/img/chat.jpg' %}" alt="Card image cap">
+            <img class="card-img-top" src="{% static 'resources/img/processing.jpg' %}" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Talk to your data</h5>
+              <h5 class="card-title"><a href="{% url 'process_document' %}">Process a Document</a></h5>
               <p class="card-text">Are you single? probably yes and I'm guessing thats why you want to talk to your data.</p>
             </div>
           </div>
@@ -49,7 +53,7 @@
           <div class="card h-100">
             <img class="card-img-top" src="{% static 'resources/img/organize.jpg' %}" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Organize your data</h5>
+              <h5 class="card-title"><a href="{% url 'archive' %}">Search through your data</a></h5>
               <p class="card-text">Unlike my work desk, DooHickey lets you organize your data in the way you want</p>
             </div>
           </div>
@@ -58,7 +62,7 @@
           <div class="card h-100">
             <img class="card-img-top" src="{% static 'resources/img/train2.jpg' %}" alt="Card image cap" class="img-fluid">
             <div class="card-body">
-              <h5 class="card-title">Train ML models</h5>
+              <h5 class="card-title"><a href="{% url 'data-talk' %}">Train ML models</a></h5>
               <p class="card-text">Well, unlike my gym life, you can actually train your own custom Ml model using the data extracted from your documents.</p>
             </div>
           </div>

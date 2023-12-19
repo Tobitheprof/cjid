@@ -102,8 +102,8 @@
               </a>
             </li>
 
-            <li class="menu-item">
-              <a href="index.html" class="menu-link mb-5">
+            <li class="menu-item {% if current_path == '/talk-with-your-data' %}active{% endif %}">
+              <a href="{% url 'data-talk' %}" class="menu-link mb-5">
                 <i class="menu-icon tf-icons bx bx-user-voice"></i>
                 <div data-i18n="Analytics">Talk with your data</div>
               </a>
