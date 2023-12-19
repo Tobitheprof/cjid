@@ -17,3 +17,54 @@ Clone this repository by entering the following command in your terminal:
 ```bash
 git clone https://github.com/Tobitheprof/cjid.git
 ```
+
+### Step two:
+
+Navigate into the project directory after cloning the repository:
+
+```bash
+cd cjid
+```
+
+### Step three:
+
+Install project requirements using the command:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step four:
+
+Navigate into the project backend by executing the following commands consecutively:
+
+```bash
+cd backend
+cd cjid_archive
+
+```
+
+### Step five:
+
+Run the Python web server:
+
+- On windows
+
+```bash
+python manage.py runserver
+```
+
+### Step six:
+Run the Celery worker. Ensure you have Redis installed on your computer. You can follow this [tutorial](https://redis.io/docs/install/install-redis/) for installing Redis. 
+
+Run Celery using the following commands:
+
+- On windows:
+ ```bash
+    celery -A cjid_archive worker -l info --pool=solo
+ ```
+
+ - On Linux:
+ ```bash
+    celery -A cjid_archive worker --loglevel=info
+ ```
