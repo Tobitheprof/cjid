@@ -8,6 +8,12 @@ The primary goal behind Doo-Hickey was to develop a platform capable of extracti
 
 Now, let's dive into setting up Doo-Hickey on your machine.
 
+
+But before that, you'd need to install tesseract on your machine. You can follow this tutorial [here](https://tesseract-ocr.github.io/tessdoc/Installation.html) to do so. 
+
+
+And also setup pytesseract [here](https://pypi.org/project/pytesseract/)
+
 ## Setup Instructions
 
 ### Step one:
