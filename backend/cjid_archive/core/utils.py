@@ -1,7 +1,7 @@
 import fitz
 import os
 import pytesseract
-
+from .models import *
 def save_pdf_as_images(pdf_path):
     # Open the PDF file
     doc = fitz.open(pdf_path)
@@ -28,7 +28,7 @@ def save_pdf_as_images(pdf_path):
 
     return folder_name
 
-def extract_text_from_images(folder_name):
+def extract_text_from_images(folder_name, document_id):
     # Get a list of image files in the folder
     image_files = [f for f in os.listdir(folder_name) if f.endswith('.jpg')]
 
@@ -43,13 +43,21 @@ def extract_text_from_images(folder_name):
 
     # Save all extracted text into a single text file
     output_text_file = f"{folder_name}_extracted_text.txt"
-    with open(output_text_file, 'w', encoding='utf-8') as file:
-        file.write(extracted_text)
+    with open(output_text_file, 'rb', encoding='utf-8') as text_file:
+        text_read = text_file.read(extracted_text)
+    new_doc_instance = Document.objects.get(id=document_id)
+    new_doc_instance.extracted_text = text_read
+    new_doc_instance.save()
+    print(extracted_text)
 
     print(f"All extracted text has been saved to {output_text_file}")
 
     # Read the content of the text file and return the extracted text
     with open(output_text_file, 'r', encoding='utf-8') as text_file:
         extracted_text_from_file = text_file.read()
+
+    # new_doc_instance = Document.objects.get(id=document_id)
+    # new_doc_instance.extracted_text = extracted_text_from_file
+    # new_doc_instance.save()
 
     return extracted_text_from_file

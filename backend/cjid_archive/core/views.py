@@ -32,7 +32,13 @@ def process_document(request):
         new_document = Document.objects.create(title=title, publication_date=publication_date, document=file)
         new_document.save()
 
-        extract_images_task.delay(new_document.pk)
+        from django.conf import settings
+        media_url = settings.MEDIA_URL
+        document_filename = new_document.document.name
+        document_url = f"{media_url}documents/newspapers/{document_filename}"
+
+
+        convert_pdf_to_images.delay(new_document.pk)
         print("STARTEDT TASK")
 
         # messages.info("Alright, the document processing has started. It might take sometime so just relax while the engine takes care of the work. The admin should an email once it's done processing")

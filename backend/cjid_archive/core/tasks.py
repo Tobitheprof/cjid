@@ -1,68 +1,72 @@
 from celery import shared_task
+import fitz  # PyMuPDF
 from .models import Document, ExtractedImages
-from .utils import save_pdf_as_images, extract_text_from_images
+from celery import shared_task
+import pytesseract
 import os
-from django.conf import settings
+from .utils import *
+from io import BytesIO
+from PIL import Image as PILImage
 
 @shared_task
-def extract_images_task(document_id):
+def convert_pdf_to_images(document_id, target_dpi=300):
     try:
-        document = Document.objects.get(pk=document_id)
-        uploaded_file_path = os.path.join(settings.MEDIA_ROOT, str(document.document))
+        document = Document.objects.get(id=document_id)
+        pdf_document = document.document.path
 
-        folder_name = save_pdf_as_images(uploaded_file_path)
-        print(f"Images saved in folder: {folder_name}")
+        pdf = fitz.open(pdf_document)
+        
+        for page_num in range(pdf.page_count):
+            page = pdf.load_page(page_num)
+            
+            # Calculate image size based on DPI
+            zoom_x = target_dpi / 72.0
+            zoom_y = target_dpi / 72.0
+            mat = fitz.Matrix(zoom_x, zoom_y)
+            pixmap = page.get_pixmap(matrix=mat)
+            
+            pil_image = PILImage.frombytes("RGB", [pixmap.width, pixmap.height], pixmap.samples)
+            
+            # Save PIL image to a buffer
+            image_buffer = BytesIO()
+            pil_image.save(image_buffer, format='PNG')
+            image_buffer.seek(0)
+            
+            image_path = f"newspapers/extracted_images/{document_id}_page_{page_num + 1}.png"
+            image_file = ExtractedImages()
+            image_file.page_number = str(page_num + 1)
+            image_file.associated_document = document
+            image_file.image.save(image_path, image_buffer)
+            
+        pdf.close()
+        
+        extract_text_from_images.delay(document_id)
 
-        # Rest of your code to save extracted images...
-        image_files = os.listdir(folder_name)
-        for image_file in image_files:
-            image_path = os.path.join(folder_name, image_file)
-            try:
-                extracted_image = ExtractedImages(
-                    page_number=image_file,
-                    associated_document=document
-                )
-                extracted_image.image.save(image_file, open(image_path, 'rb'), save=True)
-                print(f"Saved Image {image_file}")
-            except Exception as e:
-                print(f"Error saving image {image_file}: {e}")
-
-        # Trigger the text extraction task once image extraction is completed
-        extract_text_task.delay(document_id, folder_name)  # Call the text extraction task
+        document.processing_status = 'PENDING'
+        document.save()
 
     except Document.DoesNotExist:
-        print(f"Document with ID {document_id} does not exist.")
-    except Exception as e:
-        print(f"Error extracting images: {e}")
-
-
+        pass  # Handle exception appropriately
 
 
 @shared_task
-def extract_text_task(document_id, folder_name):
+def extract_text_from_images(document_id):
     try:
-        document = Document.objects.get(pk=document_id)
-
-        # Extract text from images
-        extraction_result = extract_text_from_images(folder_name)
-
-        if extraction_result and len(extraction_result) == 2:
-            extracted_text, text_file_path = extraction_result
-
-            if extracted_text is not None and text_file_path is not None:
-                with open(text_file_path, 'r', encoding='utf-8') as text_file:
-                    extracted_text = text_file.read()
-
-                document.extracted_text = extracted_text
-                document.title = "Shit Head"
-                document.save()
-                print("Document updated successfully with extracted text!")
-            else:
-                print("No text extracted or text extraction failed.")
-        else:
-            print("Error: Text extraction did not return expected values.")
+        document = Document.objects.get(id=document_id)
+        
+        # Gather all images associated with the document
+        images = ExtractedImages.objects.filter(associated_document=document)
+        
+        # Extract text from each image using PyTesseract
+        extracted_text = ''
+        for image in images:
+            img_text = pytesseract.image_to_string(image.image.path)
+            extracted_text += img_text + '\n\n'
+        
+        # Save the extracted text to the Document model
+        document.extracted_text = extracted_text
+        document.processing_status = 'COMPLETE'
+        document.save()
 
     except Document.DoesNotExist:
-        print(f"Document with ID {document_id} does not exist.")
-    except Exception as e:
-        print(f"Error extracting text: {e}")
+        pass  # Handle exception appropriately

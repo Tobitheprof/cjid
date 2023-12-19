@@ -1,4 +1,5 @@
 datasets
 env
-__pycache__
+backend/cjid_archive/cjid_archive__pycache__
+backend/cjid_archive/core__pycache__
 media
