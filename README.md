@@ -30,9 +30,15 @@ cd cjid
 
 Install project requirements using the command:
 
-```bash
-pip install -r requirements.txt
-```
+- On windows:
+ ```bash
+    pip install -r requirements.txt
+ ```
+
+ - On Linux:
+ ```bash
+    pip3 install -r requirements.txt
+ ```
 
 ### Step four:
 
