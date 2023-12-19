@@ -3,7 +3,26 @@ from .tasks import *
 from .models import *
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 
+"""
+For each bug and feature I either solve or create, I'll drop a dad joke.
+
+1. What do you call a cow with no legs???
+    Ground Beef(solved user auth bug)
+
+2. Why are educated so hot???
+    Cause they have more degress(Fixed mailing list bugs)
+
+3. Why did the programmer need new glasses?
+    Becaue he couldn't C# *ba dum tsss (Fixed Looping Issue With Maps API)
+
+4. Why was 6 afraid of 7?
+    Because 7, 8, 9(Fixed styling issue with maps)
+
+5. What do you call a cow with no legs?
+    Ground BEEF!!!!!!
+"""
 
 def index(request):
     context = {
@@ -11,29 +30,42 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
+
 def archive(request):
     document_list = Document.objects.filter(processing_status="COMPLETE")
-    
-    # Number of documents to display per page
-    per_page = 10  # Change this to your desired number of items per page
-    
+
+    # Handling form submission
+    keyword = request.GET.get('title')
+    date_of_publication = request.GET.get('date')
+
+    if keyword:
+        document_list = document_list.filter(Q(title__icontains=keyword) | Q(extracted_text__icontains=keyword))
+
+    if date_of_publication:
+        document_list = document_list.filter(publication_date=date_of_publication)
+
+    # Count the number of results
+    num_results = document_list.count()
+
+    # Pagination
+    per_page = 1  # Change this to your desired number of items per page
     paginator = Paginator(document_list, per_page)
     page_number = request.GET.get('page')
-    
+
     try:
         documents = paginator.page(page_number)
     except PageNotAnInteger:
-        # If page is not an integer, deliver first page
         documents = paginator.page(1)
     except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results
         documents = paginator.page(paginator.num_pages)
-    
+
     context = {
         'title': 'Archive',
         'documents': documents,
+        'num_results': num_results,
     }
     return render(request, 'archive.html', context)
+
 
 def about(request):
     context = {

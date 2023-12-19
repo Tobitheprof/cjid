@@ -74,28 +74,28 @@
 
           <ul class="menu-inner py-1 mt-5">
             <!-- Dashboard -->
-            <li class="menu-item">
+            <li class="menu-item {% if current_path == '/' %}active{% endif %}">
               <a href="{% url 'index' %}" class="menu-link mb-5">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
 
-            <li class="menu-item">
+            <li class="menu-item {% if current_path == '/about' %}active{% endif %}">
               <a href="{% url 'about' %}" class="menu-link mb-5">
                 <i class="menu-icon tf-icons bx bx-question-mark"></i>
                 <div data-i18n="Analytics">About <span>DooHickey</span></div>
               </a>
             </li>
 
-            <li class="menu-item">
+            <li class="menu-item {% if current_path == '/archive' %}active{% endif %}">
               <a href="{% url 'archive' %}" class="menu-link mb-5">
                 <i class="menu-icon tf-icons bx bx-book"></i>
                 <div data-i18n="Analytics">Archive</div>
               </a>
             </li>
 
-            <li class="menu-item">
+            <li class="menu-item {% if current_path == '/process-document' %}active{% endif %}">
               <a href="{% url 'process_document' %}" class="menu-link mb-5">
                 <i class="menu-icon tf-icons bx bx-water"></i>
                 <div data-i18n="Analytics">Process a document</div>
