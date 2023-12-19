@@ -4,7 +4,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="row">
     <div class="">
-      <h3>Title</h3>
+      <h3>{{document.title}}</h3>
       <p class="">
         N.B. <span class="fw-bold">Some of the text might be broken off or not present because the AI might not be able to extract all of the text. Do note that this does not apply to all documents. For a full reference, you can checkout the actual document by downoading it from the document url in the card to the right handside</span>
       </p>                
@@ -16,7 +16,7 @@
                     <div>
                         <p class="fw-bold"> ======== START OF EXTRACTED TEXT ========= </p>
                         <p class="lead">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga atque voluptas porro facilis illo obcaecati consequuntur ipsam officiis asperiores saepe deleniti ea numquam itaque consequatur, placeat magnam ab iure dolorem?
+                            {{document.extracted_text}}
                         </p>
                         <p class="fw-bold"> ======== END OF EXTRACTED TEXT ========= </p>
                     </div>
@@ -26,9 +26,9 @@
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body">
-                    <p class="">Title: <span class="fw-bold">Lorem</span></p>
-                    <p class="">Date Uploaded: <span class="fw-bold">24-11-23</span></p>
-                    <p class="">Document: <span class="fw-bold"><a href="#">name_download</a></span></p>
+                    <p class="">Title: <span class="fw-bold">{{document.title}}</span></p>
+                    <p class="">Date Uploaded: <span class="fw-bold">{{document.date_uploaded}}</span></p>
+                    <p class="">Document: <span class="fw-bold"><a href="{{document.document.url}}">{{document.title}}</a></span></p>
                 </div>
             </div>
         </div>

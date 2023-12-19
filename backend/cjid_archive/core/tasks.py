@@ -11,7 +11,7 @@ from PIL import Image as PILImage
 @shared_task
 def convert_pdf_to_images(document_id, target_dpi=300):
     try:
-        document = Document.objects.get(id=document_id)
+        document = Document.objects.get(id=str(document_id))
         pdf_document = document.document.path
 
         pdf = fitz.open(pdf_document)
@@ -42,7 +42,7 @@ def convert_pdf_to_images(document_id, target_dpi=300):
         
         extract_text_from_images.delay(document_id)
 
-        document.processing_status = 'PENDING'
+        document.processing_status = 'IN PROGRESS'
         document.save()
 
     except Document.DoesNotExist:
@@ -52,7 +52,7 @@ def convert_pdf_to_images(document_id, target_dpi=300):
 @shared_task
 def extract_text_from_images(document_id):
     try:
-        document = Document.objects.get(id=document_id)
+        document = Document.objects.get(id=str(document_id))
         
         # Gather all images associated with the document
         images = ExtractedImages.objects.filter(associated_document=document)

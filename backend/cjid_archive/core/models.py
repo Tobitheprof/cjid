@@ -9,6 +9,7 @@ PROCESS_STATUS = (
 
 
 class Document(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True)
     title = models.CharField(max_length=200, unique=True)
     publication_date = models.DateField()
     date_uploaded = models.DateField(auto_now_add=True)
