@@ -6,6 +6,6 @@ urlpatterns = [
     path('archive', views.archive, name="archive"),
     path('about', views.about, name="about"),
     path('process-document', views.process_document, name="process_document"),
-    path('document-detail/<str:pk>', views.document_detail, name="document_detail"),
+    path('document/detail/<str:pk>', views.document_detail, name="document_detail"),
     path('talk-with-your-data', views.data_talk, name="data-talk"),
 ]

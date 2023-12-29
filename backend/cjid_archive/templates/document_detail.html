@@ -4,34 +4,161 @@
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="row">
     <div class="">
-      <h3>{{document.title}}</h3>
+      <h3>{{ document.title }}</h3>
       <p class="">
-        N.B. <span class="fw-bold">Some of the text might be broken off or not present because the AI might not be able to extract all of the text. Do note that this does not apply to all documents. For a full reference, you can checkout the actual document by downoading it from the document url in the card to the right handside</span>
-      </p>                
+        N.B. <span class="fw-bold">Some of the text might be broken off or not present because the AI might not be able to extract all of the text. Do note that this does not apply to all documents. For a full reference, you can checkout the actual document by downloading it from the document URL in the card to the right-hand side.</span>
+      </p>
     </div>
     <div class="row">
-        <div class="col-md-8 overflow-auto">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div>
-                        <p class="fw-bold"> ======== START OF EXTRACTED TEXT ========= </p>
-                        <p class="lead">
-                            {{document.extracted_text}}
-                        </p>
-                        <p class="fw-bold"> ======== END OF EXTRACTED TEXT ========= </p>
-                    </div>
-                </div>
+      <div class="col-md-8 overflow-auto">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div>
+              <p class="fw-bold"> ======== START OF EXTRACTED TEXT ========= </p>
+              <p class="lead" id="documentText">
+                {{ document.extracted_text }}
+              </p>
+              <p class="fw-bold"> ======== END OF EXTRACTED TEXT ========= </p>
             </div>
+          </div>
         </div>
-        <div class="col-md-4">
-            <div class="card mb-4">
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <p class="">Title: <span class="fw-bold">{{ document.title }}</span></p>
+            <p class="">Date Uploaded: <span class="fw-bold">{{ document.date_uploaded }}</span></p>
+            <p class="">Document: <span class="fw-bold"><a href="{{ document.document.url }}">{{ document.title }}</a></span></p>
+          </div>
+        </div>
+        <form method="GET" enctype="multipart/form-data" class="sticky-top">
+            <div class="">
+              <div class="card mb-4">
                 <div class="card-body">
-                    <p class="">Title: <span class="fw-bold">{{document.title}}</span></p>
-                    <p class="">Date Uploaded: <span class="fw-bold">{{document.date_uploaded}}</span></p>
-                    <p class="">Document: <span class="fw-bold"><a href="{{document.document.url}}">{{document.title}}</a></span></p>
+                  <div>
+                    <label for="defaultFormControlInput" class="form-label mt-3">Keyword Search</label>
+                    <input name="keyword" type="text" class="form-control" id="defaultFormControlInput" placeholder="Don't worry about the title, I've got this one" aria-describedby="defaultFormControlHelp" required>
+          
+                    <button class="btn btn-primary mt-3" type="button" id="searchButton">Search</button>
+                    <button class="btn btn-primary mt-3" type="button" id="previousButton" style="display: none;">Previous</button>
+                    <button class="btn btn-primary mt-3" type="button" id="nextButton" style="display: none;">Next</button> <!-- Add Previous and Next buttons -->
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
+
+<script>
+    // Function to highlight keywords in the document text
+    function highlightKeywords(keyword) {
+      const documentText = document.getElementById('documentText');
+      const text = documentText.innerHTML;
+  
+      // Remove existing highlighting
+      documentText.innerHTML = text.replace(/<mark>(.*?)<\/mark>/g, '$1');
+  
+      // Highlight the keyword
+      const regex = new RegExp(`\\b${keyword}\\b`, 'gi');
+      documentText.innerHTML = text.replace(regex, '<mark class="highlighted">$&</mark>');
+    }
+  
+    // Scroll to the next keyword match
+    let currentIndex = 0;
+    let keywordMatches = [];
+  
+    function scrollToNextKeyword() {
+      if (keywordMatches.length === 0) return;
+  
+      currentIndex = (currentIndex + 1) % keywordMatches.length;
+      const match = keywordMatches[currentIndex];
+      match.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  
+      // Remove darker highlight from the previously focused keyword
+      const previousMatch = keywordMatches[(currentIndex - 1 + keywordMatches.length) % keywordMatches.length];
+      if (previousMatch) {
+        previousMatch.classList.remove('current-highlight');
+      }
+  
+      // Apply darker highlight to the current keyword
+      match.classList.add('current-highlight');
+    }
+  
+    // Scroll to the previous keyword match
+    function scrollToPreviousKeyword() {
+      if (keywordMatches.length === 0) return;
+  
+      currentIndex = (currentIndex - 1 + keywordMatches.length) % keywordMatches.length;
+      const match = keywordMatches[currentIndex];
+      match.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  
+      // Remove darker highlight from the previously focused keyword
+      const nextMatch = keywordMatches[(currentIndex + 1) % keywordMatches.length];
+      if (nextMatch) {
+        nextMatch.classList.remove('current-highlight');
+      }
+  
+      // Apply darker highlight to the current keyword
+      match.classList.add('current-highlight');
+    }
+  
+    // Attach event listener to the "Search" button
+    document.getElementById('searchButton').addEventListener('click', () => {
+      const keyword = document.getElementById('defaultFormControlInput').value;
+      keywordMatches = [];
+      currentIndex = -1;
+      highlightKeywords(keyword);
+  
+      // Find all matches and store them
+      const regex = new RegExp(`\\b${keyword}\\b`, 'gi');
+      const matches = document.querySelectorAll('#documentText mark');
+      matches.forEach((match) => {
+        if (regex.test(match.textContent)) {
+          keywordMatches.push(match);
+        }
+      });
+  
+      // Show or hide navigation buttons based on matches
+      toggleNavigationButtons();
+  
+      scrollToNextKeyword();
+    });
+  
+    // Attach event listener to the "Next" button
+    document.getElementById('nextButton').addEventListener('click', () => {
+      scrollToNextKeyword();
+      toggleNavigationButtons();
+    });
+  
+    // Attach event listener to the "Previous" button
+    document.getElementById('previousButton').addEventListener('click', () => {
+      scrollToPreviousKeyword();
+      toggleNavigationButtons();
+    });
+  
+    // Function to show or hide "Previous" and "Next" buttons
+    function toggleNavigationButtons() {
+      const previousButton = document.getElementById('previousButton');
+      const nextButton = document.getElementById('nextButton');
+  
+      if (keywordMatches.length === 0) {
+        previousButton.style.display = 'none';
+        nextButton.style.display = 'none';
+      } else if (currentIndex === 0) {
+        previousButton.style.display = 'none';
+        nextButton.style.display = 'block';
+      } else if (currentIndex === keywordMatches.length - 1) {
+        previousButton.style.display = 'block';
+        nextButton.style.display = 'none';
+      } else {
+        previousButton.style.display = 'block';
+        nextButton.style.display = 'block';
+      }
+    }
+</script>
+  
+    
 {% endblock content %}

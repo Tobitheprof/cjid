@@ -102,7 +102,7 @@ def process_document(request):
 def document_detail(request, pk):
     document = Document.objects.get(id=pk)
     context = {
-        'title' : "Detail",
+        'title' : f"Detail | {document.title}",
         'document' : document
     }
     return render(request, 'document_detail.html', context)
